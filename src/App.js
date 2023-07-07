@@ -5,12 +5,35 @@ import List from './component/list'
 import Footer from './component/footer'
 
 export default class App extends Component {
+
+  state = {
+    todos:[
+      {id:'001',name:'janon',done:true},
+      {id:'002',name:'takayama',done:false},
+      {id:'003',name:'kobayashi',done:true},
+      {id:'004',name:'regoku',done:true},
+      {id:'005',name:'takanashi',done:true},
+    ]
+  }
+
+  // 用於添加一個todo 接收的參數是todo對象
+  addtodo=(todoobj)=>{
+    // 獲取todos
+    const {todos} =this.state
+    // 追加一個todos
+    const newdtodos = [todoobj,...todos]
+    // 更新狀態
+    this.setState({todos:newdtodos})
+    
+  }
+
   render() {
+    const {todos} = this.state
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header/>
-          <List/>
+          <Header addtodo={this.addtodo}/>
+          <List todos={todos}/>
           <Footer/>
         </div>
       </div>
