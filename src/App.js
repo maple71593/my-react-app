@@ -8,11 +8,11 @@ export default class App extends Component {
 
   state = {
     todos:[
-      {id:'001',name:'janon',done:true},
-      {id:'002',name:'takayama',done:false},
-      {id:'003',name:'kobayashi',done:true},
-      {id:'004',name:'regoku',done:true},
-      {id:'005',name:'takanashi',done:true},
+      {id:5,name:'janon',done:true},
+      {id:4,name:'takayama',done:false},
+      {id:3,name:'kobayashi',done:true},
+      {id:2,name:'regoku',done:true},
+      {id:1,name:'takanashi',done:true},
     ]
   }
 
@@ -32,7 +32,7 @@ export default class App extends Component {
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header addtodo={this.addtodo}/>
+          <Header todos={todos} addtodo={this.addtodo}/>
           <List todos={todos}/>
           <Footer/>
         </div>

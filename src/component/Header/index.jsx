@@ -10,7 +10,8 @@ export default class Header extends Component {
       alert('請輸入資料') 
       return
     }
-      const todoobj = {id:target.length+1,name:target.value ,done:false}
+      const {todos} = this.props
+      const todoobj = {id:todos.length+1,name:target.value ,done:false}
       // 將todoobj傳給APP
       this.props.addtodo(todoobj)
       target.value =''
