@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
-import Header from './component/header'
-import List from './component/list'
-import Footer from './component/footer'
+import Header from './component/Header';
+import List from './component/List'
+import Footer from './component/Footer'
 
 export default class App extends Component {
 
@@ -27,13 +27,22 @@ export default class App extends Component {
     
   }
 
+  updatatodo = (id,done)=>{
+    const {todos} = this.state
+    const newTodos = todos.map((event)=>{
+      if (event.id === id) return {...event,done}
+      else return event
+    })
+    this.setState({todos:newTodos})
+  }
+
   render() {
     const {todos} = this.state
     return (
       <div className="todo-container">
         <div className="todo-wrap">
           <Header todos={todos} addtodo={this.addtodo}/>
-          <List todos={todos}/>
+          <List todos={todos} updatatodo={this.updatatodo}/>
           <Footer/>
         </div>
       </div>

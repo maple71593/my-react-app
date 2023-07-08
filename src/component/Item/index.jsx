@@ -12,19 +12,21 @@ export default class Item extends Component {
     }
   }
 
-  boxchange=(event)=>{
-    this.done = event.target.checked;
-    console.log(this.done);
+  boxchange=(id)=>{
+    return (event)=>{
+      this.props.updatatodo(id,event.target.checked)
+      console.log(event.target.checked);
+    }
   }
 
   render() {
-    const { name, dowhat, done } = this.props
+    const { name, id, done } = this.props
     const {mouse} = this.state
     return (
       <li style={{ backgroundColor: mouse ? '#ddd' : 'white' }} onMouseEnter={this.handleMouse(true)} onMouseLeave={this.handleMouse(false)}>
         <label>
-          <input type="checkbox" defaultChecked={done} onChange={this.boxchange} />
-          <span>{name},{dowhat}</span>
+          <input type="checkbox" defaultChecked={done} onChange={this.boxchange(id)} />
+          <span>{name}</span>
         </label>
         <button className="btn btn-danger" style={{ display: mouse ? 'block' : 'none' }}>删除</button>
       </li>
